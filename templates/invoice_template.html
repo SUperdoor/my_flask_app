@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Invoice</title>
+</head>
+
+<body>
+    <h1>Invoice</h1>
+    <p>Vendor: {{ data.vendor }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Item</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data.get("items", []) %}
+            <tr>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.item }}</td>
+                <td>{{ item.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Subtotal: {{ data.subtotal }}</p>
+    <p>Total: {{ data.total }}</p>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Review Extracted Data</title>
+</head>
+
+<body>
+    <h1>Review Invoice Data</h1>
+    <form action="/review" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Item</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data.get("items", []) %}
+                <tr>
+                    <td><input type="text" name="quantity_{{ loop.index }}" value="{{ item.quantity }}"></td>
+                    <td><input type="text" name="item_{{ loop.index }}" value="{{ item.item }}"></td>
+                    <td><input type="text" name="amount_{{ loop.index }}" value="{{ item.amount }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Subtotal: <input type="text" name="subtotal" value="{{ data.subtotal }}"></p>
+        <p>Total: <input type="text" name="total" value="{{ data.total }}"></p>
+        <button type="submit">Confirm</button>
+    </form>
+</body>
+
+</html>

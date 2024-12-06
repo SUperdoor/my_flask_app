@@ -1,0 +1,5 @@
+Flask
+pdfplumber
+pdfkit
+Jinja2
+Werkzeug
